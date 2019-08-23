@@ -13,13 +13,17 @@
     <div class="container">
       <div class="row">
         <div class="col-12 col-lg-6">
-          <h1>Submit your new tag</h1>
+          <?php if(isset($_SESSION['result'])) { ?> 
+            <div class="alert alert-success">
+              <p class="m-0"><?php echo $_SESSION['result']; ?></p>
+            </div>
+          <?php } ?>
+          <h1 class="mb-4">Update day's tag</h1>
           <form method="POST">
             <div class="form-group">
-              <label for="tag">Desired tag</label>
-              <input name="tag" type="text" class="form-control" maxlength="24" id="tag" placeholder="Insert here your desired tag">
+              <input name="tag" type="text" class="form-control" maxlength="24" id="tag" placeholder="Insert here your tag">
             </div>
-            <button name="submit_form" type="submit" class="btn btn-primary">Submit</button>
+            <button name="submit_form" type="submit" class="btn btn-primary">Update</button>
           </form>
         </div>
       </div>

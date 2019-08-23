@@ -14,10 +14,11 @@
         'lastUpdate' => $this->update // MySQL errors forced me to change it to Y-m-d.
       );
       $payload = json_encode($payload);
-      $payload = base64_encode($payload);  
+      $hashed = new Security($payload);
+      $payload = $hashed->encrypt();
       $submit = new Stats();
       $submit = $submit->updateStats($payload);
-      echo 'Database has been updated. Please check it for results.';
+      $_SESSION['result'] = "Tag changed at " .  date("H:i") . " to <b>$this->tag</b>.";
     }
   }
 
